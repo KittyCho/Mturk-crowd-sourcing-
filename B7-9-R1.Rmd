@@ -1,0 +1,248 @@
+---
+title: "Reliability"
+output: pdf_document
+date: '2022-03-23'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+
+library(readxl)
+library(tidyverse)
+library(dplyr)
+
+
+```
+
+# B7 
+
+```{r}
+
+setwd("~/Desktop/moral appeal project/human coding reliability/B7/7.1.1")
+d_7_1_1<-read.csv("winter coding batch 7.1.1_March 23, 2022_17.10.csv")
+
+d_7_1_1<-subset(d_7_1_1,select= -c(StartDate,EndDate,Status,IPAddress,Progress,Duration..in.seconds.,Finished,RecordedDate,ResponseId,RecipientLastName,RecipientFirstName,RecipientEmail,ExternalReference,LocationLatitude,LocationLongitude,DistributionChannel,UserLanguage))
+
+d_7_1_1<-d_7_1_1[-c(2),]
+# delete accidentally added answers 
+d_7_1_1<-d_7_1_1[-c(4),]
+
+d_7_1_1<-as.data.frame(t(d_7_1_1))
+d_7_1_1<-d_7_1_1%>%slice(-c(1))
+
+
+setwd("~/Desktop/moral appeal project")
+tweet<-read.csv("final coding sample 500 tweets month.csv")
+tweet<-tweet%>%slice(c(1201:1225))
+tweet<-tweet[rep(seq_len(nrow(tweet)),each=138),]
+d_7_1_1$tweet<-tweet$content
+names(d_7_1_1)<-c("question","heysung","yooji","tweet")
+d_7_1_1<-d_7_1_1[,c("tweet","question","heysung","yooji")]
+
+
+```
+
+
+```{r}
+
+setwd("~/Desktop/moral appeal project/human coding reliability/B7/7.1.2")
+d_7_1_2<-read.csv("winter coding batch 7.1.2_March 23, 2022_17.14.csv")
+
+d_7_1_2<-subset(d_7_1_2,select= -c(StartDate,EndDate,Status,IPAddress,Progress,Duration..in.seconds.,Finished,RecordedDate,ResponseId,RecipientLastName,RecipientFirstName,RecipientEmail,ExternalReference,LocationLatitude,LocationLongitude,DistributionChannel,UserLanguage))
+
+d_7_1_2<-d_7_1_2[-c(2),]
+
+
+d_7_1_2<-as.data.frame(t(d_7_1_2))
+d_7_1_2<-d_7_1_2%>%slice(-c(1))
+
+
+setwd("~/Desktop/moral appeal project")
+tweet<-read.csv("final coding sample 500 tweets month.csv")
+tweet<-tweet%>%slice(c(1226:1250))
+tweet<-tweet[rep(seq_len(nrow(tweet)),each=138),]
+d_7_1_2$tweet<-tweet$content
+names(d_7_1_2)<-c("question","heysung","yooji","tweet")
+d_7_1_2<-d_7_1_2[,c("tweet","question","heysung","yooji")]
+
+```
+
+```{r}
+
+setwd("~/Desktop/moral appeal project/human coding reliability/B7/7.2.1")
+d_7_2_1<-read.csv("winter coding batch 7.2.1_March 23, 2022_17.21.csv")
+
+d_7_2_1<-subset(d_7_2_1,select= -c(StartDate,EndDate,Status,IPAddress,Progress,Duration..in.seconds.,Finished,RecordedDate,ResponseId,RecipientLastName,RecipientFirstName,RecipientEmail,ExternalReference,LocationLatitude,LocationLongitude,DistributionChannel,UserLanguage))
+
+d_7_2_1<-d_7_2_1[-c(2),]
+
+
+d_7_2_1<-as.data.frame(t(d_7_2_1))
+d_7_2_1<-d_7_2_1%>%slice(-c(1))
+
+
+setwd("~/Desktop/moral appeal project")
+tweet<-read.csv("final coding sample 500 tweets month.csv")
+tweet<-tweet%>%slice(c(1251:1275))
+tweet<-tweet[rep(seq_len(nrow(tweet)),each=138),]
+d_7_2_1$tweet<-tweet$content
+names(d_7_2_1)<-c("question","heysung","yooji","tweet")
+d_7_2_1<-d_7_2_1[,c("tweet","question","heysung","yooji")]
+
+
+
+```
+
+
+```{r}
+
+setwd("~/Desktop/moral appeal project/human coding reliability/B7/7.2.2")
+d_7_2_2<-read.csv("winter coding batch 7.2.2_March 23, 2022_17.21.csv")
+
+d_7_2_2<-subset(d_7_2_2,select= -c(StartDate,EndDate,Status,IPAddress,Progress,Duration..in.seconds.,Finished,RecordedDate,ResponseId,RecipientLastName,RecipientFirstName,RecipientEmail,ExternalReference,LocationLatitude,LocationLongitude,DistributionChannel,UserLanguage))
+
+d_7_2_2<-d_7_2_2[-c(2),]
+# delete accidentally added answers 
+d_7_2_2<-d_7_2_2[-c(4),]
+
+d_7_2_2<-as.data.frame(t(d_7_2_2))
+
+d_7_2_2<-d_7_2_2%>%slice(-c(1))
+
+
+setwd("~/Desktop/moral appeal project")
+tweet<-read.csv("final coding sample 500 tweets month.csv")
+tweet<-tweet%>%slice(c(1276:1300))
+tweet<-tweet[rep(seq_len(nrow(tweet)),each=138),]
+d_7_2_2$tweet<-tweet$content
+names(d_7_2_2)<-c("question","heysung","yooji","tweet")
+d_7_2_2<-d_7_2_2[,c("tweet","question","heysung","yooji")]
+
+
+
+```
+
+
+```{r}
+
+setwd("~/Desktop/moral appeal project/human coding reliability/B7/7.3.1")
+d_7_3_1<-read.csv("winter coding batch 7.3.1_March 23, 2022_17.22.csv")
+
+d_7_3_1<-subset(d_7_3_1,select= -c(StartDate,EndDate,Status,IPAddress,Progress,Duration..in.seconds.,Finished,RecordedDate,ResponseId,RecipientLastName,RecipientFirstName,RecipientEmail,ExternalReference,LocationLatitude,LocationLongitude,DistributionChannel,UserLanguage))
+
+d_7_3_1<-d_7_3_1[-c(2),]
+# delete accidentally added answers 
+d_7_3_1<-d_7_3_1[-c(4),]
+
+d_7_3_1<-as.data.frame(t(d_7_3_1))
+d_7_3_1<-d_7_3_1%>%slice(-c(1))
+
+
+setwd("~/Desktop/moral appeal project")
+tweet<-read.csv("final coding sample 500 tweets month.csv")
+tweet<-tweet%>%slice(c(1301:1325))
+tweet<-tweet[rep(seq_len(nrow(tweet)),each=138),]
+d_7_3_1$tweet<-tweet$content
+names(d_7_3_1)<-c("question","heysung","yooji","tweet")
+d_7_3_1<-d_7_3_1[,c("tweet","question","heysung","yooji")]
+
+```
+
+
+```{r}
+
+setwd("~/Desktop/moral appeal project/human coding reliability/B7/7.3.2")
+d_7_3_2<-read.csv("winter coding batch 7.3.2_March 23, 2022_17.22.csv")
+
+d_7_3_2<-subset(d_7_3_2,select= -c(StartDate,EndDate,Status,IPAddress,Progress,Duration..in.seconds.,Finished,RecordedDate,ResponseId,RecipientLastName,RecipientFirstName,RecipientEmail,ExternalReference,LocationLatitude,LocationLongitude,DistributionChannel,UserLanguage))
+
+d_7_3_2<-d_7_3_2[-c(2),]
+# delete accidentally added answers 
+d_7_3_2<-d_7_3_2[-c(4),]
+d_7_3_2<-d_7_3_2[-c(4),]
+
+
+d_7_3_2<-as.data.frame(t(d_7_3_2))
+d_7_3_2<-d_7_3_2%>%slice(-c(1))
+
+
+setwd("~/Desktop/moral appeal project")
+tweet<-read.csv("final coding sample 500 tweets month.csv")
+tweet<-tweet%>%slice(c(1326:1350))
+tweet<-tweet[rep(seq_len(nrow(tweet)),each=138),]
+d_7_3_2$tweet<-tweet$content
+names(d_7_3_2)<-c("question","heysung","yooji","tweet")
+d_7_3_2<-d_7_3_2[,c("tweet","question","heysung","yooji")]
+
+```
+
+
+```{r}
+
+setwd("~/Desktop/moral appeal project/human coding reliability/B7/7.4.1")
+d_7_4_1<-read.csv("winter coding batch 7.4.1_March 23, 2022_17.23.csv")
+
+d_7_4_1<-subset(d_7_4_1,select= -c(StartDate,EndDate,Status,IPAddress,Progress,Duration..in.seconds.,Finished,RecordedDate,ResponseId,RecipientLastName,RecipientFirstName,RecipientEmail,ExternalReference,LocationLatitude,LocationLongitude,DistributionChannel,UserLanguage))
+
+d_7_4_1<-d_7_4_1[-c(2),]
+# delete accidentally added answers 
+d_7_4_1<-d_7_4_1[-c(4),]
+d_7_4_1<-d_7_4_1[-c(4),]
+
+
+d_7_4_1<-as.data.frame(t(d_7_4_1))
+d_7_4_1<-d_7_4_1%>%slice(-c(1))
+
+
+setwd("~/Desktop/moral appeal project")
+tweet<-read.csv("final coding sample 500 tweets month.csv")
+tweet<-tweet%>%slice(c(1351:1375))
+tweet<-tweet[rep(seq_len(nrow(tweet)),each=138),]
+d_7_4_1$tweet<-tweet$content
+names(d_7_4_1)<-c("question","heysung","yooji","tweet")
+d_7_4_1<-d_7_4_1[,c("tweet","question","heysung","yooji")]
+
+```
+
+
+```{r}
+
+setwd("~/Desktop/moral appeal project/human coding reliability/B7/7.4.2")
+d_7_4_2<-read.csv("winter coding batch 7.4.2_March 23, 2022_17.23.csv")
+
+d_7_4_2<-subset(d_7_4_2,select= -c(StartDate,EndDate,Status,IPAddress,Progress,Duration..in.seconds.,Finished,RecordedDate,ResponseId,RecipientLastName,RecipientFirstName,RecipientEmail,ExternalReference,LocationLatitude,LocationLongitude,DistributionChannel,UserLanguage))
+
+d_7_4_2<-d_7_4_2[-c(2),]
+
+d_7_4_2<-as.data.frame(t(d_7_4_2))
+d_7_4_2<-d_7_4_2%>%slice(-c(1))
+
+
+setwd("~/Desktop/moral appeal project")
+tweet<-read.csv("final coding sample 500 tweets month.csv")
+tweet<-tweet%>%slice(c(1376:1400))
+tweet<-tweet[rep(seq_len(nrow(tweet)),each=138),]
+d_7_4_2$tweet<-tweet$content
+names(d_7_4_2)<-c("question","heysung","yooji","tweet")
+d_7_4_2<-d_7_4_2[,c("tweet","question","heysung","yooji")]
+
+```
+
+```{r}
+
+B7<-rbind(d_7_1_1,d_7_1_2,d_7_2_1,d_7_2_2,d_7_3_1,d_7_3_2,d_7_4_1,d_7_4_2)
+write.csv(B7,"B7.csv")
+
+
+```
+
+
+
+
+
+
+

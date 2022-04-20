@@ -1,0 +1,209 @@
+---
+title: "Untitled"
+author: '2024'
+date: '2022-04-19'
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+
+library(readxl)
+library(tidyverse)
+library(dplyr)
+library(stringr)
+library(gtools)
+library(irrCAC)
+
+```
+
+
+```{r}
+
+source("noneabove.R")
+source("none.R")
+source("one.R")
+source("two.R")
+source("three.R")
+
+
+```
+
+
+# Batch 7
+
+
+```{r}
+
+b7<- read.csv("B7.csv")
+
+```
+
+
+```{r}
+
+# for none of the above cases, recode # of foundations as "none"
+
+b7<-noneabove(b7,"heysung")
+b7<-noneabove(b7,"yooji")
+
+b7<-none_foundation("heysung",b7)
+b7<-none_foundation("yooji",b7)
+
+b7<-one_foundation("heysung",b7)
+b7<-one_foundation("yooji",b7)
+
+b7<-two_foundation("heysung",b7)
+b7<-two_foundation("yooji",b7)
+
+b7<-three_function("heysung",b7)
+b7<-three_function("yooji",b7)
+
+write.csv(b7, file="b7clean.csv",row.names = F)
+
+```
+
+
+```{r}
+
+# Harm/Care
+
+# raw coding 
+b7_hc <- b7[b7$question=="Harm/Care",]
+
+# presence & absence 
+b7_hcp<-b7_hc
+b7_hcp$heysung<-ifelse(b7_hcp$heysung == "0", 0, 1)
+b7_hcp$yooji<-ifelse(b7_hcp$yooji == "0", 0, 1)
+b7_hcp<-b7_hcp%>%
+  select(heysung,yooji)
+
+
+# Fairness/Cheating
+
+# raw coding 
+b7_fc <- b7[b7$question=="Fairness/Cheating",]
+
+# presence & absence 
+b7_fcp<-b7_fc
+b7_fcp$heysung<-ifelse(b7_fcp$heysung == "0", 0, 1)
+b7_fcp$yooji<-ifelse(b7_fcp$yooji == "0", 0, 1)
+b7_fcp<-b7_fcp%>%
+  select(heysung,yooji)
+
+
+# Loyalty/Betrayal
+
+# raw coding 
+b7_lb <- b7[b7$question=="Loyalty/Betrayal",]
+
+# presence & absence 
+b7_lbp<-b7_lb
+b7_lbp$heysung<-ifelse(b7_lbp$heysung == "0", 0, 1)
+b7_lbp$yooji<-ifelse(b7_lbp$yooji == "0", 0, 1)
+b7_lbp<-b7_lbp%>%
+  select(heysung,yooji)
+
+
+# Authority/Subversion
+
+# raw coding 
+b7_as <- b7[b7$question=="Authority/Subversion",]
+
+# presence & absence 
+b7_asp<-b7_as
+b7_asp$heysung<-ifelse(b7_asp$heysung == "0", 0, 1)
+b7_asp$yooji<-ifelse(b7_asp$yooji == "0", 0, 1)
+b7_asp<-b7_asp%>%
+  select(heysung,yooji)
+
+
+# Liberty/Oppression
+
+# raw coding 
+b7_lo <- b7[b7$question=="Liberty/Oppression",]
+
+# presence & absence 
+b7_lop<-b7_lo
+b7_lop$heysung<-ifelse(b7_lop$heysung == "0", 0, 1)
+b7_lop$yooji<-ifelse(b7_lop$yooji == "0", 0, 1)
+b7_lop<-b7_lop%>%
+  select(heysung,yooji)
+
+
+```
+
+
+
+# krippen
+
+```{r}
+
+# Harm/Care
+
+krippen.alpha.raw(b7_hcp)$est$coeff.val
+
+
+# Fairness/Cheating
+
+krippen.alpha.raw(b7_fcp)$est$coeff.val
+
+
+
+# Loyalty/Betrayal
+
+krippen.alpha.raw(b7_lbp)$est$coeff.val
+
+
+
+# Authority/Subversion
+
+krippen.alpha.raw(b7_asp)$est$coeff.val
+
+
+
+# Liberty/Oppression
+
+krippen.alpha.raw(b7_lop)$est$coeff.val
+
+
+
+```
+
+
+# gwet.ac1
+
+```{r}
+
+# Harm/Care
+
+gwet.ac1.raw(b7_hcp)$est$coeff.val
+
+
+# Fairness/Cheating
+
+gwet.ac1.raw(b7_fcp)$est$coeff.val
+
+
+# Loyalty/Betrayal
+
+gwet.ac1.raw(b7_lbp)$est$coeff.val
+
+
+# Authority/Subversion
+
+gwet.ac1.raw(b7_asp)$est$coeff.val
+
+
+# Liberty/Oppression
+
+gwet.ac1.raw(b7_lop)$est$coeff.val
+
+
+```
+
+
